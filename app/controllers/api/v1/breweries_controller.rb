@@ -1,4 +1,4 @@
-class BreweriesController < ApplicationController
+class API::V1::BreweriesController < ApplicationController
 
   def index
     @breweries = Brewery.all
