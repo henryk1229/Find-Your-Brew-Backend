@@ -1,4 +1,4 @@
 class Brewery < ApplicationRecord
-  has_many: Favorites,
-  has_many: Breweries, through: Favorites
+  has_many: :favorites,
+  has_many: :users, through: :favorites
 end
