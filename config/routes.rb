@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  namespace :api do
+  scope module: 'api' do
     namespace :v1 do
-      resources :breweries, only: [:index, :show]
-      resources :users, only: [:index, :show, :create, :new]
-      resources :favorites, only: [:create, :new]
+      resources :breweries
+      resources :users
+      resources :favorites
     end
-  end 
+  end
 end

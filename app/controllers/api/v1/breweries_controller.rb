@@ -1,20 +1,22 @@
-class API::V1::BreweriesController < ApplicationController
+module Api::V1
+  class BreweriesController < ApplicationController
 
-  def index
-    @breweries = Brewery.all
-    render json: @breweries
-  end
+    def index
+      @breweries = Brewery.all
+      render json: @breweries
+    end
 
-  def show
-    @brewery = Brewery.find(params[:id])
-    render  json: @brewery
-  end
+    def show
+      @brewery = Brewery.find(params[:id])
+      render  json: @brewery
+    end
 
 
 
-  private
+    private
 
-  def brewery_params:
-    params.permit(:name, :brewery_type, :street, :city, :state, :postal_code, :country, :longitude, :latitude, :phone, :website_url, :tag_list)
+    def brewery_params
+      params.permit(:name, :brewery_type, :street, :city, :state, :postal_code, :country, :longitude, :latitude, :phone, :website_url, :tag_list)
+    end
   end
 end
