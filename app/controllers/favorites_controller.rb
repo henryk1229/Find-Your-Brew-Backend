@@ -1,4 +1,4 @@
-class Api::V1::FavoritesController < ApplicationController
+class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new(favorite_params)
