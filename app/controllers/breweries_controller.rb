@@ -2,7 +2,7 @@
 class BreweriesController < ApplicationController
 
   def index
-    @breweries = Brewery.get_breweries
+    @breweries = Brewery.all
     render json: @breweries
   end
 
