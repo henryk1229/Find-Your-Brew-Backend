@@ -1,4 +1,3 @@
-
 class BreweriesController < ApplicationController
 
   def index
