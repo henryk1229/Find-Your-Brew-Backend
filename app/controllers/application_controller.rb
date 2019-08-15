@@ -6,14 +6,13 @@ class ApplicationController < ActionController::API
   end
 
   def auth_header
-    request.headers['Authorization']
+    request.headers["Authorization"]
   end
 
   def decoded_token
     if auth_header
-      token = auth_header.split(' ')[1]
       begin
-        JWT.decode(token, 'b@boon', true, algorithm: 'HS256')
+        JWT.decode(auth_header, 'b@boon')[0]["user_id"]
       rescue JWT::DecodeError
         nil
       end
@@ -21,10 +20,9 @@ class ApplicationController < ActionController::API
   end
 
   def session_user
-    if decoded_token
-      user_id = decoded_token[0]['user_id']
-      @user = user.find_by(id: user_id)
-    end
+
+    User.find_by(id: decoded_token)
+
   end
 
   def logged_in?
