@@ -15,9 +15,17 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def index
-    users = User.all
-    render json: users
+  def favorite
+    @brewery = Brewery.find_by(id: params[:brewery_id])
+    @user = User.find_by(id: params[:id])
+
+    if @user.breweries.include?(@brewery)
+      @user.breweries.delete(@brewery)
+
+    else
+      @user.breweries << @brewery
+      @user.save
+    end
   end
 
   private

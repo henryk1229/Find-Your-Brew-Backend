@@ -7,16 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #get brewery data
-arr = []
+array = []
 i = 0
-page = 9
+page = 10
+
 while i < page do
-  response = RestClient.get("https://api.openbrewerydb.org/breweries?by_state=new_york&page=#{i+1}&per_page=50")
-  breweries_data = JSON.parse(response)
-  arr.push(breweries_data)
-  i +=1
+  response = RestClient.get("https://api.openbrewerydb.org/breweries/?page=#{i}&per_page=20")
+    breweries_data = JSON.parse(response)
+    array << breweries_data
+    i += 1
 end
-brewery_data = arr.flatten
+
+brewery_data = array.flatten
 
 brewery_data.each do |brewery|
 
