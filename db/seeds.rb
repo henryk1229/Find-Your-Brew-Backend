@@ -9,7 +9,7 @@
 #get brewery data
 array = []
 i = 0
-page = 10
+page = 250
 
 while i < page do
   response = RestClient.get("https://api.openbrewerydb.org/breweries/?page=#{i}&per_page=20")
